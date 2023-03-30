@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
+        collectionView.allowsSelection = true
+        collectionView.isUserInteractionEnabled = true
         return collectionView
     }()
     
@@ -42,11 +44,16 @@ class ViewController: UIViewController {
     
     @objc func addTapped() {
         
+        
+        
     }
 }
 
+
+
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return randomSquare.count
     }
@@ -57,6 +64,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return item
     }
     
+    //MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = randomSquare[indexPath.row].color
+        let secondVc = SecondViewController()
+        secondVc.color = cell
+//        secondVc.modalPresentationStyle = .popover
+        present(secondVc, animated: true)
+    
+    }
+    
+    
+    //MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: randomSquare[indexPath.row].height)
     }
