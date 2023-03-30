@@ -11,7 +11,8 @@ class ViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 110, height: 400)
+        //layout.itemSize = CGSize(width: 110, height: 800)
+        layout.estimatedItemSize = .zero
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
@@ -21,30 +22,43 @@ class ViewController: UIViewController {
         collectionView.backgroundColor = .white
         return collectionView
     }()
+    
+    
+    var randomSquare = Source.makeRandomSquare()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
        collectionView.frame = view.bounds
     }
+    
+    @objc func addTapped() {
+        
+    }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return randomSquare.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath)
-        item.backgroundColor = .blue
+        item.backgroundColor = randomSquare[indexPath.row].color
         
         return item
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: randomSquare[indexPath.row].height)
     }
     
     
