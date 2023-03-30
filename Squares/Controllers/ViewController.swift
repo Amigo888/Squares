@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        //layout.itemSize = CGSize(width: 110, height: 800)
         layout.estimatedItemSize = .zero
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,31 +24,37 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    
-    var randomSquare = Source.makeRandomSquare()
+    public var randomSquare = Source.makeRandomSquare()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        //add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        //setup constraints
        collectionView.frame = view.bounds
     }
     
     @objc func addTapped() {
-        
-        
-        
+        //add new item on collectionView
+        randomSquare.append(Cell(height: Int.random(in: 100...400), color: UIColor.random()))
+        collectionView.reloadData()
+        //Scroll to bottom
+        let item = collectionView(collectionView, numberOfItemsInSection: 0) - 1
+        let lastItemIndex = IndexPath(item: item, section: 0)
+        self.collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
     }
 }
 
 
+//MARK: - Delegate, DataSource, DelegateFlowLayout
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -57,6 +62,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return randomSquare.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath)
         item.backgroundColor = randomSquare[indexPath.row].color
@@ -69,7 +75,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cell = randomSquare[indexPath.row].color
         let secondVc = SecondViewController()
         secondVc.color = cell
-//        secondVc.modalPresentationStyle = .popover
         present(secondVc, animated: true)
     
     }
@@ -79,8 +84,4 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: randomSquare[indexPath.row].height)
     }
-    
-    
 }
-
-

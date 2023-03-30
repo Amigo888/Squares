@@ -15,11 +15,13 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = color
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
+        
+        
     }
     
-    @objc func cancelTapped() {
-        dismiss(animated: true)
-    }
+    @objc func actionClose(_ tap: UITapGestureRecognizer) {
+       presentingViewController?.dismiss(animated: true, completion: nil)
+     }
 
 }

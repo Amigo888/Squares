@@ -16,16 +16,13 @@ struct Source {
     static func makeRandomSquare() -> [Cell] {
         var randonArray: [Cell] = []
         
-        let colors = DataManager.shared.colors.shuffled()
-        let heights = DataManager.shared.heigts.shuffled()
-        
-        for index in 0..<colors.count {
-            let cell = Cell(height: heights[index], color: colors[index])
-            
-            randonArray.append(cell)
+        for _ in 0...5 {
+            randonArray.append(Cell(height: Int.random(in: 100...500), color: UIColor.random()))
         }
         return randonArray
     }
 }
+
+
 
 

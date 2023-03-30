@@ -15,8 +15,7 @@
 		5FF9EBB429D59FA20093C5AB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB329D59FA20093C5AB /* CollectionViewCell.swift */; };
 		5FF9EBB629D59FCF0093C5AB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB529D59FCF0093C5AB /* SecondViewController.swift */; };
 		5FF9EBB829D5A0E90093C5AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB729D5A0E90093C5AB /* Model.swift */; };
-		5FF9EBBA29D5A41D0093C5AB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB929D5A41D0093C5AB /* DataManager.swift */; };
-		5FF9EBC029D5B4300093C5AB /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBBF29D5B4300093C5AB /* Transition.swift */; };
+		5FF9EBC229D61FE10093C5AB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBC129D61FE10093C5AB /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +29,7 @@
 		5FF9EBB329D59FA20093C5AB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		5FF9EBB529D59FCF0093C5AB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5FF9EBB729D5A0E90093C5AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		5FF9EBB929D5A41D0093C5AB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		5FF9EBBF29D5B4300093C5AB /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		5FF9EBC129D61FE10093C5AB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				5FF9EB9E29D598120093C5AB /* Squares */,
+				5FF9EBBE29D5AA370093C5AB /* SupportingFiles */,
 				5FF9EB9D29D598120093C5AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,13 +63,12 @@
 		5FF9EB9E29D598120093C5AB /* Squares */ = {
 			isa = PBXGroup;
 			children = (
-				5FF9EBBE29D5AA370093C5AB /* SupportingFiles */,
+				5FF9EBAD29D598150093C5AB /* Info.plist */,
 				5FF9EBBC29D5AA220093C5AB /* Controllers */,
 				5FF9EBBD29D5AA2A0093C5AB /* View */,
 				5FF9EBBB29D5AA110093C5AB /* Model */,
-				5FF9EBA829D598150093C5AB /* Assets.xcassets */,
-				5FF9EBAA29D598150093C5AB /* LaunchScreen.storyboard */,
-				5FF9EBAD29D598150093C5AB /* Info.plist */,
+				5FF9EBC329D6272E0093C5AB /* Extensions */,
+				5FF9EBC429D627BD0093C5AB /* Animation */,
 			);
 			path = Squares;
 			sourceTree = "<group>";
@@ -79,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				5FF9EBB729D5A0E90093C5AB /* Model.swift */,
-				5FF9EBB929D5A41D0093C5AB /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			children = (
 				5FF9EBA329D598120093C5AB /* ViewController.swift */,
 				5FF9EBB529D59FCF0093C5AB /* SecondViewController.swift */,
-				5FF9EBBF29D5B4300093C5AB /* Transition.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,10 +101,27 @@
 		5FF9EBBE29D5AA370093C5AB /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				5FF9EBA829D598150093C5AB /* Assets.xcassets */,
+				5FF9EBAA29D598150093C5AB /* LaunchScreen.storyboard */,
 				5FF9EB9F29D598120093C5AB /* AppDelegate.swift */,
 				5FF9EBA129D598120093C5AB /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5FF9EBC329D6272E0093C5AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5FF9EBC129D61FE10093C5AB /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5FF9EBC429D627BD0093C5AB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,10 +195,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FF9EBA429D598120093C5AB /* ViewController.swift in Sources */,
+				5FF9EBC229D61FE10093C5AB /* UIColor.swift in Sources */,
 				5FF9EBA029D598120093C5AB /* AppDelegate.swift in Sources */,
 				5FF9EBB429D59FA20093C5AB /* CollectionViewCell.swift in Sources */,
-				5FF9EBC029D5B4300093C5AB /* Transition.swift in Sources */,
-				5FF9EBBA29D5A41D0093C5AB /* DataManager.swift in Sources */,
 				5FF9EBB829D5A0E90093C5AB /* Model.swift in Sources */,
 				5FF9EBB629D59FCF0093C5AB /* SecondViewController.swift in Sources */,
 				5FF9EBA229D598120093C5AB /* SceneDelegate.swift in Sources */,
