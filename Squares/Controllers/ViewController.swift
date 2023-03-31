@@ -39,16 +39,17 @@ class ViewController: UIViewController {
         //add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         
-//        transition.dismissCompletion = { [weak self] in
-//            guard
-//                let selectedIndexPathCell = self?.collectionView.indexPath(for: CollectionViewCell()),
-//              let selectedCell = self?.collectionView.cellForItem(at: selectedIndexPathCell) as? CollectionViewCell
-//              else {
-//                return
-//            }
-//
-//            //selectedCell.shadowView.isHidden = false
-//          }
+        transition.dismissCompletion = { [weak self] in
+            guard
+                let selectedIndexPathCell = self?.collectionView.indexPathsForSelectedItems?.first,
+                let selectedCell = self?.collectionView.cellForItem(at: selectedIndexPathCell) as? CollectionViewCell,
+                //let selectedCellSuperview = selectedCell.superview
+              else {
+                return
+            }
+            
+            //selectedCell.shadowView.isHidden = false
+          }
         
     }
     
@@ -106,7 +107,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 extension ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
       guard
-        let selectedIndexPathCell = collectionView.indexPath(for: CollectionViewCell()),
+        let selectedIndexPathCell = collectionView.indexPathsForSelectedItems?.first,
         let selectedCell = collectionView.cellForItem(at: selectedIndexPathCell)  as? CollectionViewCell,
         let selectedCellSuperview = selectedCell.superview
         else {

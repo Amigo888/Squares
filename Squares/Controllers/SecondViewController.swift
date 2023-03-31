@@ -13,7 +13,7 @@ class SecondViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         button.setTitleColor(.gray, for: .normal)
-        button.addTarget(self, action: #selector(dissmiss), for: .touchUpInside)
+        button.addTarget(self, action: #selector(dis), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -39,9 +39,9 @@ class SecondViewController: UIViewController {
         ])
     }
     
-    @objc func dissmiss() {
-        navigationController?.dismiss(animated: true)
-     }
+    @objc func dis() {
+        self.dismiss(animated: true)
+        }
     
     
 
