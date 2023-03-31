@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             guard
                 let selectedIndexPathCell = self?.collectionView.indexPathsForSelectedItems?.first,
                 let selectedCell = self?.collectionView.cellForItem(at: selectedIndexPathCell) as? CollectionViewCell,
-                //let selectedCellSuperview = selectedCell.superview
+                let selectedCellSuperview = selectedCell.superview
               else {
                 return
             }
