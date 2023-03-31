@@ -25,6 +25,11 @@ class ViewController: UIViewController {
     }()
     
     public var randomSquare = Source.makeRandomSquare()
+    
+    //var selectedCell: CollectionViewCell?
+    //var selectedCellImageViewSnapshot: UIView?
+    
+    var transition = Animator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,17 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         //add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
+//        transition.dismissCompletion = { [weak self] in
+//            guard
+//                let selectedIndexPathCell = self?.collectionView.indexPath(for: CollectionViewCell()),
+//              let selectedCell = self?.collectionView.cellForItem(at: selectedIndexPathCell) as? CollectionViewCell
+//              else {
+//                return
+//            }
+//
+//            //selectedCell.shadowView.isHidden = false
+//          }
         
     }
     
@@ -75,13 +91,44 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cell = randomSquare[indexPath.row].color
         let secondVc = SecondViewController()
         secondVc.color = cell
+        secondVc.transitioningDelegate = self
+        secondVc.modalPresentationStyle = .fullScreen
         present(secondVc, animated: true)
-    
     }
     
     
     //MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: randomSquare[indexPath.row].height)
+    }
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      guard
+        let selectedIndexPathCell = collectionView.indexPath(for: CollectionViewCell()),
+        let selectedCell = collectionView.cellForItem(at: selectedIndexPathCell)  as? CollectionViewCell,
+        let selectedCellSuperview = selectedCell.superview
+        else {
+          return nil
+      }
+      
+      transition.originFrame = selectedCellSuperview.convert(selectedCell.frame, to: nil)
+      transition.originFrame = CGRect(
+        x: transition.originFrame.origin.x + 20,
+        y: transition.originFrame.origin.y + 20,
+        width: transition.originFrame.size.width - 40,
+        height: transition.originFrame.size.height - 40
+      )
+      
+      transition.presenting = true
+      //selectedCell.shadowView.isHidden = true
+      
+      return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      transition.presenting = false
+      return transition
     }
 }

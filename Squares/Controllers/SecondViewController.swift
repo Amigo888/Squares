@@ -9,19 +9,40 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
+    private let button :  UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(dissmiss), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     var color: UIColor? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(button)
         view.backgroundColor = color
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
-        
         
     }
     
-    @objc func actionClose(_ tap: UITapGestureRecognizer) {
-       presentingViewController?.dismiss(animated: true, completion: nil)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    @objc func dissmiss() {
+        navigationController?.dismiss(animated: true)
      }
+    
+    
 
 }

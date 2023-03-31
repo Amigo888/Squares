@@ -16,6 +16,7 @@
 		5FF9EBB629D59FCF0093C5AB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB529D59FCF0093C5AB /* SecondViewController.swift */; };
 		5FF9EBB829D5A0E90093C5AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBB729D5A0E90093C5AB /* Model.swift */; };
 		5FF9EBC229D61FE10093C5AB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBC129D61FE10093C5AB /* UIColor.swift */; };
+		5FF9EBC629D632750093C5AB /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9EBC529D632750093C5AB /* Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		5FF9EBB529D59FCF0093C5AB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5FF9EBB729D5A0E90093C5AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5FF9EBC129D61FE10093C5AB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5FF9EBC529D632750093C5AB /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		5FF9EBC429D627BD0093C5AB /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				5FF9EBC529D632750093C5AB /* Animation.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				5FF9EBA429D598120093C5AB /* ViewController.swift in Sources */,
 				5FF9EBC229D61FE10093C5AB /* UIColor.swift in Sources */,
+				5FF9EBC629D632750093C5AB /* Animation.swift in Sources */,
 				5FF9EBA029D598120093C5AB /* AppDelegate.swift in Sources */,
 				5FF9EBB429D59FA20093C5AB /* CollectionViewCell.swift in Sources */,
 				5FF9EBB829D5A0E90093C5AB /* Model.swift in Sources */,
